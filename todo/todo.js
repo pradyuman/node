@@ -14,6 +14,12 @@ var commands = {
 	},
 	add:function(item){
 		list.push(item);	
+	},
+	remove:function(item){
+		list.splice(list.indexOf(item),1);
+	},
+	clear:function(){
+		list.splice(0);
 	}
 };
 
