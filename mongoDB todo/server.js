@@ -16,8 +16,8 @@ app.set('view engine','ejs');
 
 app.get('/',todoController.index);
 app.post('/',todoController.create);
-app.put('/:todoId',todoController.update);
-app.del('/:todoId',todoController.delete);
+app.put('/:todoID',todoController.update);
+app.del('/:todoID',todoController.delete);
 
 app.listen(port,function(err) {
 	console.log('listening on %s',port);

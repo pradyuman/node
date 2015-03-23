@@ -30,6 +30,7 @@ controller.create = [
 
 controller.update = [
 	function(req,res,next){
+		todo.findByID(req.params('todoID'));
 		next();
 	},
 	function(req,res,next){
