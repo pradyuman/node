@@ -2,7 +2,7 @@ This is a simple blog node/express app that allows users to post and view blog a
 
 Currently, the remove blog post, comment on blog posts, and other such functionality are mapped in server.js but are not implemented. There are no plans to complete such functionality.
 
-Run: `npm install` to get required node.js modules before running the server.
+Run `npm install` to get required node.js modules before running the server.
 
 To use: Type `node server` in the command line and then visit ***localhost:8080\posts*** to view any posts or ***localhost:8080\posts\new*** to add posts to the server.
 
