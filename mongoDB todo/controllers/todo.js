@@ -29,12 +29,21 @@ controller.create = [
 ];
 
 controller.update = [
-	function(req,res,next){
-		todo.findByID(req.params('todoID'));
-		next();
+	function(req,res,next) {
+		todo.findById(req.param('todoID'), function(err,todo){
+			if(err) return next(err);
+			if(!todo) return res.send(404);
+			req.todo = todo; //Passing info to next() using request
+			next();
+		});
 	},
 	function(req,res,next){
-
+		for(key in req.body) {
+			req.todo[key] = req.body[key];
+		}
+		req.todo.save(function(err, todo) {
+			res.json(todo);
+		});
 	}
 ];
 
