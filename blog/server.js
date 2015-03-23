@@ -1,26 +1,19 @@
 var express = require('express'),
 	app = express(),
-	posts = require('controllers/articles');
+	bodyParser = require('body-parser'),
+	posts = require('./controllers/posts');
 
-var data = [];
 var notImplemented = function(req,res) {
 	res.sendStatus(501);
 }
 
+app.use(bodyParser());
+
 //post functions
-/*
-  a post will be like this:
-  {
-  	title:"",
-	body:"",
-	author:"",
-	comments:[]
-  }
- */
-app.get('/posts', notImplemented); //show all blog posts
+app.get('/posts', posts.index); //show all blog posts
+app.get('/posts/new', posts.new); //display a form to create a post
 app.get('/posts/:postID', notImplemented); //read a post
-app.get('/posts/new', notImplemented); //display a form to create a post
-app.post('/posts', notImplemented); //make a new post
+app.post('/posts', posts.create); //make a new post
 app.put('/posts/:postID', notImplemented); //update a post
 app.delete('/posts/:postID', notImplemented); //delete a post
 

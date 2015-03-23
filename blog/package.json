@@ -4,7 +4,8 @@
   "description": "A simple blog application in node/express",
   "main": "server.js",
   "dependencies":{
-	"express":"*"	  
+	"express":"*",
+    "body-parser":"*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
