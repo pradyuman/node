@@ -7,7 +7,6 @@ require('./models/todo')
 
 var	todoController = require('./controllers/todo');
 
-
 mongoose.connect('mongodb://localhost/mongoToDo')
 
 app.use(express.json());
