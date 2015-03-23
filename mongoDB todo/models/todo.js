@@ -6,4 +6,5 @@ var todoSchema = new schema({
 	createdAt:{type:Date,default:Date.now}
 });
 
+//Register model
 mongoose.model('todo',todoSchema);

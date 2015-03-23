@@ -1,7 +1,8 @@
 var express = require('express'),
 	app = express(),
 	port = process.env.PORT || 8080,
-	mongoose = require('mongoose');
+	mongoose = require('mongoose'),
+	bodyParser = require('body-parser')
 
 require('./models/todo')
 
@@ -9,9 +10,8 @@ var	todoController = require('./controllers/todo');
 
 mongoose.connect('mongodb://localhost/mongoToDo')
 
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.logger());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.set('view engine','ejs');
 
 app.get('/',todoController.index);

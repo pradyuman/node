@@ -6,7 +6,8 @@
   "dependencies":{
       "express":"*",
       "mongoose":"*",
-      "ejs":"*"
+      "ejs":"*",
+      "body-parser":"*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
