@@ -1,0 +1,23 @@
+<ul>
+	<% articles.forEach(function(article) { %>
+		<li>
+			<a href="/articles/<%=article.id%>"><%=article.title%></a>
+		</li>
+
+	<% }); %>
+</ul>
+
+<form method="post" action="/articles">
+	<div><input autofocus placeholder="title" name="title"/></div>
+	<div>
+		user:
+		<select name="user">
+			<option></option>
+			<% users.forEach(function(user){ %>
+				<option value="<%=user.id%>"><%=user.name%></option>
+			<% }); %>
+		</select>
+	</div>
+	<div><textarea placeholder="article body" name="body"></textarea></div>
+	<button type="submit">Add</button>
+</form>

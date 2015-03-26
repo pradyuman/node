@@ -1,31 +1,45 @@
 var express = require('express'),
 	app = express(),
-	bodyParser = require('body-parser'),
-	posts = require('./controllers/posts');
+	port = process.env.PORT || 8080,
+	mongoose = require('mongoose');
 
-var notImplemented = function(req,res) {
-	res.sendStatus(501);
-}
+require('./models/user');
+require('./models/article');
 
-app.use(bodyParser());
+var	userController = require('./controllers/user');
+var	articleController = require('./controllers/article');
+var	commentController = require('./controllers/comment');
 
-//post functions
-app.get('/posts', posts.index); //show all blog posts
-app.get('/posts/new', posts.new); //display a form to create a post
-app.get('/posts/:postID', notImplemented); //read a post
-app.post('/posts', posts.create); //make a new post
-app.put('/posts/:postID', notImplemented); //update a post
-app.delete('/posts/:postID', notImplemented); //delete a post
 
-//comment functions
-/*
-  a comment will be like this:
-  {
-  	name:"",
-	text:""
-  }
- */
-app.post('/posts/:postID/comments', notImplemented);
-app.delete('/posts/:postID/comments/:commentID', notImplemented);
+mongoose.connect('mongodb://localhost/blog')
 
-app.listen(8080);
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.logger());
+app.set('view engine','ejs');
+
+//Posts
+app.get('/articles',articleController.index);
+app.get('/articles/:articleId',articleController.view);
+app.post('/articles',articleController.create);
+app.put('/articles/:articleId',articleController.update);
+app.del('/articles/:articleId',articleController.delete);
+
+//Comments
+app.post('/articles/:articleId',commentController.create);
+app.del('/articles/:articleId/:commentId',commentController.delete);
+
+//Users
+app.get('/users',userController.index);
+app.post('/users',userController.create);
+app.put('/users/:userId',userController.update);
+app.del('/users/:userId',userController.delete);
+
+//When express finds an articleID -> load articleController
+app.param('articleId',articleController.load);
+//When express finds a userID -> load userController
+app.param('userId',userController.load);
+
+app.listen(port,function(err) {
+	console.log('listening on %s',port);
+});

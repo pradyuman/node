@@ -1,0 +1,22 @@
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% users.forEach(function(user) { %>
+			<tr>
+				<td><%=user.name%></td>
+				<td><%=user.email%></td>
+			</tr>
+		<% }); %>
+	</tbody>
+</table>
+
+<form method="post" action="/users">
+	<div><input autofocus placeholder="name" name="name"/></div>
+	<div><input placeholder="email" type="email" name="email"/></div>
+	<button type="submit">Add</button>
+</form>

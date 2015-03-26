@@ -1,0 +1,30 @@
+<a href="/articles">Back to all articles</a>
+
+<article>
+	<h1><%=article.title%></h1>
+	<h2>By <%=article.user.name%></h2>
+	<%=article.body%>
+</article>
+
+<hr>
+<h2>Comments</h2>
+<% article.comments.forEach(function(comment) { %>
+	<div>
+		By: <em><%=comment.user.name%></em>
+		<p><%=comment.text%></p>
+	</div>
+<% }); %>
+<hr>
+<form method="post" action="/articles/<%=article.id%>">
+	<div>
+		user:
+		<select name="user">
+			<option></option>
+			<% users.forEach(function(user){ %>
+				<option value="<%=user.id%>"><%=user.name%></option>
+			<% }); %>
+		</select>
+	</div>
+	<div><textarea placeholder="comment text" name="text"></textarea></div>
+	<button type="submit">Add</button>
+</form>

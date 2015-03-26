@@ -1,23 +1,13 @@
 {
   "name": "blog",
   "version": "0.0.1",
-  "description": "A simple blog application in node/express",
-  "main": "server.js",
+  "description": "",
   "dependencies":{
-	"express":"*",
-    "body-parser":"*"
+  	"express":"*",
+  	"mongoose":"*",
+  	"ejs":"*"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/scyphi/node"
-  },
+  "main": "server.js",
   "author": "Pradyuman Vig",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/scyphi/node/issues"
-  },
-  "homepage": "https://github.com/scyphi/node"
+  "license": "MIT"
 }
