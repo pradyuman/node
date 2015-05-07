@@ -6,9 +6,12 @@ var express = require('express'),
 
 require('./models/todo')
 
+//Static directory
+app.use(express.static(__dirname + '/public'));
+
 var	todoController = require('./controllers/todo');
 
-mongoose.connect('mongodb://localhost/mongoToDo')
+//mongoose.connect(process.env.MONGOLAB_URI);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
